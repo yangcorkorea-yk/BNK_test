@@ -13,42 +13,50 @@
       --bnk-silver: #909394;
       --bg: #FFFFFF;
       --bg-soft: #F7F5F2;
+      --bg-warm: #FAF8F5;
       --text: #2A2A2A;
       --text-muted: #6B6B6B;
       --border: #E8E4DE;
+      --border-strong: #D4CFC7;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-      background: var(--bg);
+      background: var(--bg-soft);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 상단 헤더 */
+    a { text-decoration: none; color: inherit; }
+
+    /* ============ 상단 헤더 ============ */
     .top-bar {
       background: var(--bnk-dark-gray);
       color: white;
       font-size: 12px;
-      padding: 8px 40px;
+      padding: 8px 32px;
       display: flex;
-      justify-content: flex-end;
-      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
     }
-    .top-bar a {
-      color: white;
-      text-decoration: none;
+    .top-bar .greeting { opacity: 0.95; }
+    .top-bar .util {
+      display: flex;
+      gap: 18px;
+    }
+    .top-bar .util a {
       opacity: 0.85;
+      transition: opacity 0.15s;
     }
-    .top-bar a:hover { opacity: 1; }
+    .top-bar .util a:hover { opacity: 1; }
 
     .header {
       background: white;
       border-bottom: 1px solid var(--border);
-      padding: 20px 40px;
+      padding: 18px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,341 +64,580 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
     .logo-mark {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       background: var(--bnk-red);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: -0.5px;
     }
     .logo-text {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      color: var(--text);
       letter-spacing: -0.5px;
     }
     .logo-text span { color: var(--bnk-red); }
     .logo-sub {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
-    .gnb {
-      display: flex;
-      gap: 36px;
-    }
-    .gnb a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 8px 0;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-    .gnb a:hover, .gnb a.active {
-      color: var(--bnk-red);
-      border-bottom-color: var(--bnk-red);
-    }
-
-    /* 히어로 영역 */
-    .hero {
-      background: linear-gradient(135deg, var(--bnk-dark-red) 0%, var(--bnk-red) 100%);
-      color: white;
-      padding: 56px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
-    }
-    .hero-content {
-      position: relative;
-      max-width: 1200px;
-    }
-    .hero h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -1px;
-    }
-    .hero p {
-      font-size: 16px;
-      opacity: 0.92;
-    }
-
-    /* 메인 컨테이너 */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 40px;
-    }
-
-    .section-title {
+    .user-info {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 12px;
+      font-size: 13px;
     }
-    .section-title::before {
-      content: '';
-      width: 4px;
-      height: 20px;
+    .user-avatar {
+      width: 36px;
+      height: 36px;
       background: var(--bnk-red);
-    }
-    .section-title h2 {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    /* 카드 그리드 */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-    .card {
-      background: white;
-      padding: 28px 24px;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-      cursor: pointer;
-      position: relative;
-    }
-    .card:hover {
-      border-color: var(--bnk-red);
-      box-shadow: 0 8px 24px rgba(215, 25, 31, 0.08);
-      transform: translateY(-2px);
-    }
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--bg-soft);
-      color: var(--bnk-red);
+      color: white;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      margin-bottom: 16px;
-    }
-    .card h3 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-    .card p {
+      font-weight: 600;
       font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
     }
-    .card-arrow {
-      position: absolute;
-      top: 28px;
-      right: 24px;
-      color: var(--bnk-light-gray);
-      transition: all 0.2s;
-    }
-    .card:hover .card-arrow {
-      color: var(--bnk-red);
-      transform: translateX(4px);
+    .user-detail .name { font-weight: 600; }
+    .user-detail .dept { color: var(--text-muted); font-size: 12px; }
+
+    /* ============ 메인 컨테이너 ============ */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 28px 32px;
     }
 
-    /* 통계 영역 */
-    .stats {
-      background: var(--bg-soft);
-      padding: 32px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-    .stat-item {
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-label {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-    .stat-value {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--bnk-red);
-      letter-spacing: -1px;
-    }
-    .stat-value .unit {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-left: 4px;
-    }
-
-    /* 공지사항 */
-    .notice-list {
-      background: white;
-      border: 1px solid var(--border);
-    }
-    .notice-item {
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
+    /* 섹션 제목 */
+    .section-title {
       display: flex;
       align-items: center;
-      gap: 16px;
-      cursor: pointer;
-      transition: background 0.15s;
+      justify-content: space-between;
+      margin-bottom: 16px;
     }
-    .notice-item:last-child { border-bottom: none; }
-    .notice-item:hover { background: var(--bg-soft); }
-    .notice-tag {
+    .section-title .label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .label::before {
+      content: '';
+      width: 4px;
+      height: 18px;
+      background: var(--bnk-red);
+    }
+    .section-title h2 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .section-title .more {
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: color 0.15s;
+    }
+    .section-title .more:hover { color: var(--bnk-red); }
+
+    /* ============ 영업지원시스템 (메인) ============ */
+    .sales-main {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .sales-main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .sales-main-header .title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sales-badge {
       background: var(--bnk-red);
       color: white;
       font-size: 11px;
       font-weight: 600;
       padding: 4px 10px;
+      letter-spacing: 0.5px;
+    }
+    .sales-main h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+    }
+    .sales-main .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* 결재 위젯 */
+    .approval-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .approval-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      padding: 20px;
+      transition: all 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .approval-card:hover {
+      border-color: var(--bnk-red);
+      background: white;
+      box-shadow: 0 4px 16px rgba(215, 25, 31, 0.08);
+    }
+    .approval-card.priority {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFEEEF 100%);
+      border-color: #F5C8CA;
+    }
+    .approval-card.priority:hover {
+      border-color: var(--bnk-red);
+    }
+    .approval-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .approval-card.priority .approval-label { color: var(--bnk-dark-red); }
+    .approval-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .approval-card.priority .approval-value { color: var(--bnk-red); }
+    .approval-value .unit {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-left: 4px;
+    }
+    .approval-card.priority .approval-value .unit { color: var(--bnk-dark-red); }
+    .approval-trend {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* 빠른 진입 버튼 */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .quick-btn {
+      background: white;
+      border: 1px solid var(--border-strong);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .quick-btn:hover {
+      background: var(--bnk-red);
+      color: white;
+      border-color: var(--bnk-red);
+    }
+    .quick-btn .arrow {
+      color: var(--bnk-light-gray);
+      transition: all 0.2s;
+    }
+    .quick-btn:hover .arrow { color: white; transform: translateX(3px); }
+
+    /* ============ 2단 그리드 (그룹웨어 + 주요서비스) ============ */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    /* 그룹웨어 바로가기 */
+    .groupware-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .groupware-item {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .groupware-item:hover {
+      border-color: var(--bnk-red);
+      background: white;
+      transform: translateY(-1px);
+    }
+    .groupware-icon {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
       flex-shrink: 0;
     }
-    .notice-tag.gray {
-      background: var(--bnk-dark-gray);
+    .groupware-item:hover .groupware-icon {
+      background: var(--bnk-red);
+      border-color: var(--bnk-red);
+    }
+    .groupware-text { flex: 1; min-width: 0; }
+    .groupware-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .groupware-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .groupware-badge {
+      background: var(--bnk-red);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    /* 주요 서비스 (5개 버튼) */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .service-btn {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 20px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-btn:hover {
+      border-color: var(--bnk-red);
+      background: var(--bg-warm);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(215, 25, 31, 0.08);
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-warm);
+      color: var(--bnk-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .service-btn:hover .service-icon {
+      background: var(--bnk-red);
+      color: white;
+      border-color: var(--bnk-red);
+    }
+    .service-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+    .service-btn.placeholder {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* ============ 공지사항 ============ */
+    .notice-panel {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .notice-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .notice-item:last-child { border-bottom: none; }
+    .notice-item:hover { padding-left: 6px; }
+    .notice-item:hover .notice-title { color: var(--bnk-red); }
+    .notice-tag {
+      background: var(--bnk-red);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      flex-shrink: 0;
+      letter-spacing: 0.3px;
+    }
+    .notice-tag.gray { background: var(--bnk-dark-gray); }
+    .notice-tag.outline {
+      background: white;
+      border: 1px solid var(--bnk-dark-gray);
+      color: var(--bnk-dark-gray);
     }
     .notice-title {
       flex: 1;
       font-size: 14px;
-      color: var(--text);
+      transition: color 0.15s;
     }
     .notice-date {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
+      flex-shrink: 0;
     }
 
-    /* 푸터 */
+    /* ============ 푸터 ============ */
     footer {
       background: var(--bnk-dark-gray);
       color: white;
-      padding: 32px 40px;
-      margin-top: 60px;
+      padding: 24px 32px;
       font-size: 12px;
-      opacity: 0.95;
     }
     footer .footer-content {
-      max-width: 1280px;
+      max-width: 1400px;
       margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    footer p { opacity: 0.8; margin-top: 6px; }
+    footer strong { font-size: 13px; }
+    footer .copyright { opacity: 0.7; }
 
-    @media (max-width: 768px) {
-      .gnb, .top-bar { display: none; }
-      .hero { padding: 40px 24px; }
-      .hero h1 { font-size: 24px; }
-      .container { padding: 24px; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+    /* ============ 반응형 ============ */
+    @media (max-width: 1024px) {
+      .approval-grid { grid-template-columns: repeat(2, 1fr); }
+      .quick-actions { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .top-bar, .header { padding: 12px 20px; }
+      .container { padding: 20px; }
+      .approval-grid, .quick-actions, .groupware-grid { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .approval-value { font-size: 26px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- 상단 유틸 바 -->
   <div class="top-bar">
-    <a href="#">홈</a>
-    <a href="#">고객센터</a>
-    <a href="#">로그아웃</a>
+    <span class="greeting">안녕하세요, 양재형 차장님 ☀️</span>
+    <div class="util">
+      <a href="#">설정</a>
+      <a href="#">고객센터</a>
+      <a href="#">로그아웃</a>
+    </div>
   </div>
 
+  <!-- 헤더 -->
   <header class="header">
     <div class="logo">
       <div class="logo-mark">BNK</div>
       <div>
-        <div class="logo-text">BNK<span>캐피탈</span> 영업지원</div>
-        <div class="logo-sub">Sales Support System</div>
+        <div class="logo-text">BNK<span>캐피탈</span> 통합 포털</div>
+        <div class="logo-sub">Sales Support · Groupware · Services</div>
       </div>
     </div>
-    <nav class="gnb">
-      <a href="#" class="active">홈</a>
-      <a href="#">실적관리</a>
-      <a href="#">고객관리</a>
-      <a href="#">상품안내</a>
-      <a href="#">자료실</a>
-    </nav>
+    <div class="user-info">
+      <div class="user-detail" style="text-align: right;">
+        <div class="name">양재형 차장</div>
+        <div class="dept">영업1본부 · 부산영업점</div>
+      </div>
+      <div class="user-avatar">양</div>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>고객의 행복에 BNK캐피탈이 함께합니다</h1>
-      <p>영업 현장의 모든 업무를 한 곳에서, BNK 영업지원시스템</p>
-    </div>
-  </section>
-
+  <!-- 메인 -->
   <div class="container">
-    <div class="stats">
-      <div class="stat-item">
-        <div class="stat-label">오늘 실적</div>
-        <div class="stat-value">12<span class="unit">건</span></div>
+
+    <!-- 영업지원시스템 (메인 영역) -->
+    <section class="sales-main">
+      <div class="sales-main-header">
+        <div class="title-group">
+          <span class="sales-badge">영업지원시스템</span>
+          <div>
+            <h2>오늘의 업무 현황</h2>
+            <div class="subtitle">2026년 5월 18일 (월) · 실시간 데이터</div>
+          </div>
+        </div>
+        <a href="#" class="more">시스템 바로가기 →</a>
       </div>
-      <div class="stat-item">
-        <div class="stat-label">이번 달 신규</div>
-        <div class="stat-value">147<span class="unit">건</span></div>
+
+      <!-- 결재 현황 위젯 -->
+      <div class="approval-grid">
+        <div class="approval-card priority">
+          <div class="approval-label">🔴 결재 대기</div>
+          <div class="approval-value">3<span class="unit">건</span></div>
+          <div class="approval-trend">오늘 +2건</div>
+        </div>
+        <div class="approval-card">
+          <div class="approval-label">📋 진행 중인 품의</div>
+          <div class="approval-value">7<span class="unit">건</span></div>
+          <div class="approval-trend">이번 주 신규 4건</div>
+        </div>
+        <div class="approval-card">
+          <div class="approval-label">✅ 이번 달 완료</div>
+          <div class="approval-value">28<span class="unit">건</span></div>
+          <div class="approval-trend">평균 처리 1.2일</div>
+        </div>
+        <div class="approval-card">
+          <div class="approval-label">📊 담당 원장</div>
+          <div class="approval-value">142<span class="unit">건</span></div>
+          <div class="approval-trend">전월 대비 +8건</div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-label">관리 고객</div>
-        <div class="stat-value">2,384<span class="unit">명</span></div>
+
+      <!-- 빠른 진입 -->
+      <div class="quick-actions">
+        <a href="#" class="quick-btn">
+          <span>📝 품의 작성</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="quick-btn">
+          <span>🔍 원장 조회</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="quick-btn">
+          <span>📈 실적 현황</span>
+          <span class="arrow">→</span>
+        </a>
       </div>
-      <div class="stat-item">
-        <div class="stat-label">대기 업무</div>
-        <div class="stat-value">8<span class="unit">건</span></div>
-      </div>
+    </section>
+
+    <!-- 2단 그리드: 그룹웨어 + 주요 서비스 -->
+    <div class="two-col">
+
+      <!-- 그룹웨어 -->
+      <section class="panel">
+        <div class="section-title">
+          <div class="label"><h2>그룹웨어 바로가기</h2></div>
+          <a href="#" class="more">전체보기 →</a>
+        </div>
+        <div class="groupware-grid">
+          <a href="#" class="groupware-item">
+            <div class="groupware-icon">✉️</div>
+            <div class="groupware-text">
+              <div class="groupware-name">이메일</div>
+              <div class="groupware-desc">받은 메일함</div>
+            </div>
+            <span class="groupware-badge">5</span>
+          </a>
+          <a href="#" class="groupware-item">
+            <div class="groupware-icon">📜</div>
+            <div class="groupware-text">
+              <div class="groupware-name">지침 · 규정</div>
+              <div class="groupware-desc">사내 규정 조회</div>
+            </div>
+          </a>
+          <a href="#" class="groupware-item">
+            <div class="groupware-icon">📋</div>
+            <div class="groupware-text">
+              <div class="groupware-name">전자결재</div>
+              <div class="groupware-desc">품의 · 결재함</div>
+            </div>
+            <span class="groupware-badge">2</span>
+          </a>
+          <a href="#" class="groupware-item">
+            <div class="groupware-icon">📢</div>
+            <div class="groupware-text">
+              <div class="groupware-name">게시판</div>
+              <div class="groupware-desc">공지 · 자료실</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 주요 서비스 (5개 버튼) -->
+      <section class="panel">
+        <div class="section-title">
+          <div class="label"><h2>주요 서비스</h2></div>
+          <a href="#" class="more">전체보기 →</a>
+        </div>
+        <div class="service-grid">
+          <a href="#" class="service-btn">
+            <div class="service-icon">💾</div>
+            <div class="service-name">정보계</div>
+          </a>
+          <a href="#" class="service-btn">
+            <div class="service-icon">💰</div>
+            <div class="service-name">종합수익</div>
+          </a>
+          <a href="#" class="service-btn">
+            <div class="service-icon">🛡️</div>
+            <div class="service-name">소비자 보호</div>
+          </a>
+          <a href="#" class="service-btn">
+            <div class="service-icon">👥</div>
+            <div class="service-name">HR</div>
+          </a>
+          <a href="#" class="service-btn">
+            <div class="service-icon">📑</div>
+            <div class="service-name">책무구조도</div>
+          </a>
+          <div class="service-btn placeholder"></div>
+        </div>
+      </section>
+
     </div>
 
-    <div class="section-title">
-      <h2>주요 업무</h2>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-icon">📊</div>
-        <h3>실적 조회</h3>
-        <p>일별·월별 영업 실적 및 KPI 현황을 확인합니다.</p>
-        <div class="card-arrow">→</div>
+    <!-- 공지사항 -->
+    <section class="notice-panel">
+      <div class="section-title">
+        <div class="label"><h2>공지사항</h2></div>
+        <a href="#" class="more">전체보기 →</a>
       </div>
-      <div class="card">
-        <div class="card-icon">👥</div>
-        <h3>고객 관리</h3>
-        <p>담당 고객 정보, 상담 이력, 후속 일정을 관리합니다.</p>
-        <div class="card-arrow">→</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">💼</div>
-        <h3>상품 안내</h3>
-        <p>대출·리스·할부 상품 정보와 금리 조건을 확인합니다.</p>
-        <div class="card-arrow">→</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">📅</div>
-        <h3>일정 관리</h3>
-        <p>오늘과 이번 주의 영업 일정 및 미팅을 확인합니다.</p>
-        <div class="card-arrow">→</div>
-      </div>
-    </div>
-
-    <div class="section-title">
-      <h2>공지사항</h2>
-    </div>
-    <div class="notice-list">
       <div class="notice-item">
         <span class="notice-tag">중요</span>
         <span class="notice-title">2026년 1분기 신규 대출상품 출시 안내</span>
@@ -402,24 +649,28 @@
         <span class="notice-date">2026-05-12</span>
       </div>
       <div class="notice-item">
-        <span class="notice-tag gray">공지</span>
-        <span class="notice-title">5월 영업본부 우수직원 시상식 개최</span>
+        <span class="notice-tag outline">교육</span>
+        <span class="notice-title">신상품 교육 일정 안내 (본사 대강당)</span>
         <span class="notice-date">2026-05-10</span>
       </div>
       <div class="notice-item">
         <span class="notice-tag gray">공지</span>
-        <span class="notice-title">신상품 교육 일정 안내 (본사 대강당)</span>
+        <span class="notice-title">5월 영업본부 우수직원 시상식 개최</span>
         <span class="notice-date">2026-05-08</span>
       </div>
-    </div>
+    </section>
+
   </div>
 
   <footer>
     <div class="footer-content">
-      <strong>BNK캐피탈 영업지원시스템</strong>
-      <p>본 페이지는 Teams 연동을 위한 목업이며, 실제 시스템과는 다릅니다.</p>
-      <p>© BNK Capital. All rights reserved.</p>
+      <div>
+        <strong>BNK캐피탈 통합 포털</strong>
+        <span style="opacity: 0.7; margin-left: 8px;">Sales Support System · Mockup</span>
+      </div>
+      <div class="copyright">© BNK Capital. All rights reserved.</div>
     </div>
   </footer>
+
 </body>
 </html>
