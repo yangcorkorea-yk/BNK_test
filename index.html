@@ -396,20 +396,20 @@
       margin-bottom: 6px;
     }
     .realtime-stat {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 6px 10px;
-    }
-    .realtime-stat .lbl {
-      font-size: 10px;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-    .realtime-stat .val {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
+  background: white;
+  border: 1px solid var(--border);
+  padding: 14px 14px;   /* 6px 10px → 14px */
+}
+.realtime-stat .lbl {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.realtime-stat .val {
+  font-size: 22px;      /* 15px → 22px */
+  font-weight: 700;
+  letter-spacing: -0.7px;
+}
     .realtime-stat .val.red { color: var(--bnk-red); }
 
     .realtime-list {
@@ -676,7 +676,7 @@
           </table>
         </div>
 
-        <!-- 실시간 -->
+<!-- 실시간 -->
         <div class="realtime-panel">
 
           <div class="realtime-block">
@@ -693,28 +693,6 @@
                 <div class="val">82.4<span style="font-size:11px; color:var(--text-muted); font-weight:500;"> 억</span></div>
               </div>
             </div>
-            <div class="realtime-list">
-              <div class="realtime-row">
-                <span class="time">09:28</span>
-                <span><span class="status-tag new">NEW</span></span>
-                <span class="amount">3,200만</span>
-              </div>
-              <div class="realtime-row">
-                <span class="time">09:24</span>
-                <span><span class="status-tag new">NEW</span></span>
-                <span class="amount">1,800만</span>
-              </div>
-              <div class="realtime-row">
-                <span class="time">09:19</span>
-                <span><span class="status-tag new">NEW</span></span>
-                <span class="amount">5,500만</span>
-              </div>
-              <div class="realtime-row">
-                <span class="time">09:12</span>
-                <span><span class="status-tag new">NEW</span></span>
-                <span class="amount">2,400만</span>
-              </div>
-            </div>
           </div>
 
           <div class="realtime-block">
@@ -729,23 +707,6 @@
               <div class="realtime-stat">
                 <div class="lbl">실행 금액</div>
                 <div class="val">58.7<span style="font-size:11px; color:var(--text-muted); font-weight:500;"> 억</span></div>
-              </div>
-            </div>
-            <div class="realtime-list">
-              <div class="realtime-row">
-                <span class="time">09:22</span>
-                <span><span class="status-tag done">실행</span></span>
-                <span class="amount">4,100만</span>
-              </div>
-              <div class="realtime-row">
-                <span class="time">09:08</span>
-                <span><span class="status-tag done">실행</span></span>
-                <span class="amount">2,750만</span>
-              </div>
-              <div class="realtime-row">
-                <span class="time">08:55</span>
-                <span><span class="status-tag done">실행</span></span>
-                <span class="amount">6,300만</span>
               </div>
             </div>
           </div>
