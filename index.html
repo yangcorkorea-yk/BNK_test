@@ -4,45 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BNK캐피탈 통합 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
   <style>
     :root {
       --bnk-red: #D7191F;
-      --bnk-dark-red: #8B0304;
-      --bnk-dark-gray: #655C4F;
-      --bnk-light-gray: #B7A997;
-      --bg: #FFFFFF;
-      --bg-soft: #F5F3EF;
-      --bg-warm: #FAF8F5;
-      --bg-table: #FBFAF8;
-      --text: #2A2A2A;
-      --text-muted: #6B6B6B;
-      --text-light: #9A9A9A;
-      --border: #E8E4DE;
-      --border-strong: #D4CFC7;
-      --positive: #1B8A3B;
-      --negative: #D7191F;
+      --bnk-red-dark: #B01218;
+      --bnk-red-soft: #FFF0F1;
+      --bnk-red-line: #F5C8CA;
+
+      --bg:        #F4F5F7;
+      --surface:   #FFFFFF;
+      --surface-2: #F9FAFB;
+      --surface-3: #F2F4F6;
+
+      --line:      #E5E8EB;
+      --line-2:    #EEF0F3;
+      --line-strong:#D1D6DB;
+
+      --text:      #191F28;
+      --text-2:    #4E5968;
+      --text-3:    #8B95A1;
+      --text-4:    #B0B8C1;
+
+      --positive:  #1B8A3B;
+      --negative:  #D7191F;
+
+      --fs-xs: 11px;
+      --fs-sm: 12px;
+      --fs-md: 13px;
+      --fs-lg: 14px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body { height: 100%; }
     body {
-      font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-      background: var(--bg-soft);
+      font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont,
+                   'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: var(--bg);
       color: var(--text);
+      font-size: var(--fs-md);
       line-height: 1.4;
+      letter-spacing: -0.2px;
       -webkit-font-smoothing: antialiased;
-      font-size: 13px;
-      overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* ============ 1. 최상단 ============ */
+    /* ===== Top Header ===== */
     .top-header {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      padding: 10px 22px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 9px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,42 +70,40 @@
       min-width: 0;
     }
     .logo-mark {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       background: var(--bnk-red);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 12px;
-      letter-spacing: -0.5px;
+      font-size: 11px;
+      letter-spacing: -0.4px;
+      border-radius: 6px;
       flex-shrink: 0;
     }
     .greeting-text {
-      font-size: 15px;
+      font-size: var(--fs-lg);
       font-weight: 600;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
       white-space: nowrap;
     }
-    .greeting-text .name { color: var(--bnk-red); }
+    .greeting-text .name { color: var(--bnk-red); font-weight: 700; }
 
-    /* 헤더 드롭다운 */
-    .header-dropdown {
-      flex: 1;
-      max-width: 260px;
-    }
+    .header-dropdown { flex: 1; max-width: 260px; }
     .dropdown-select {
       width: 100%;
-      padding: 8px 32px 8px 12px;
-      border: 1px solid var(--border-strong);
-      background: white;
-      font-size: 13px;
+      padding: 7px 32px 7px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: var(--surface);
+      font-size: var(--fs-md);
       font-weight: 500;
       color: var(--text);
       cursor: pointer;
       appearance: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'><path fill='%23655C4F' d='M6 8L2 4h8z'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='none' stroke='%234E5968' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 4.5L6 7.5L9 4.5'/></svg>");
       background-repeat: no-repeat;
       background-position: right 12px center;
       transition: border-color 0.15s;
@@ -105,201 +117,211 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 12px;
       flex-shrink: 0;
     }
-    .dept-info { text-align: right; line-height: 1.3; }
-    .dept-info .name { font-weight: 600; font-size: 13px; }
-    .dept-info .dept { color: var(--text-muted); font-size: 11px; }
+    .dept-info { text-align: right; line-height: 1.25; }
+    .dept-info .name { font-weight: 600; font-size: var(--fs-md); }
+    .dept-info .dept { color: var(--text-3); font-size: var(--fs-xs); }
     .logout-btn {
-      background: white;
-      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
       padding: 6px 12px;
-      font-size: 12px;
-      color: var(--text);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      color: var(--text-2);
       transition: all 0.15s;
     }
     .logout-btn:hover { border-color: var(--bnk-red); color: var(--bnk-red); }
 
-    /* ============ 메인 ============ */
+    /* ===== Container ===== */
     .container {
       max-width: 1500px;
       margin: 0 auto;
-      padding: 14px 22px;
+      padding: 12px 22px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    /* 공통 섹션 */
     .panel {
-      background: white;
-      border: 1px solid var(--border);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
       padding: 14px 16px;
-      margin-bottom: 12px;
     }
+
     .section-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 10px;
     }
-    .section-head .label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .section-head .label::before {
-      content: '';
-      width: 3px;
-      height: 14px;
-      background: var(--bnk-red);
-    }
     .section-head h2 {
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
     }
     .timestamp {
-      font-size: 11px;
-      color: var(--text-light);
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      font-variant-numeric: tabular-nums;
     }
 
-    /* ============ 주요 서비스 ============ */
+    /* ===== Services ===== */
     .service-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
+      gap: 8px;
     }
     .service-btn {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 10px 6px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 6px 8px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      transition: all 0.18s;
+      transition: all 0.18s ease;
     }
     .service-btn:hover {
       border-color: var(--bnk-red);
-      background: var(--bg-warm);
+      background: var(--bnk-red-soft);
       transform: translateY(-1px);
-      box-shadow: 0 3px 8px rgba(215, 25, 31, 0.08);
     }
     .service-icon {
-      width: 30px;
-      height: 30px;
-      background: var(--bg-warm);
+      width: 32px;
+      height: 32px;
+      background: var(--surface-3);
       color: var(--bnk-red);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
-      border: 1px solid var(--border);
-      transition: all 0.18s;
+      border-radius: 8px;
+      transition: all 0.18s ease;
     }
+    .service-icon svg { width: 17px; height: 17px; }
     .service-btn:hover .service-icon {
       background: var(--bnk-red);
       color: white;
-      border-color: var(--bnk-red);
     }
     .service-name {
-      font-size: 11px;
+      font-size: var(--fs-sm);
       font-weight: 600;
       letter-spacing: -0.3px;
       line-height: 1.25;
     }
 
-    /* ============ 결재 대기 ============ */
+    /* ===== Approval ===== */
     .approval-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
     }
     .approval-card {
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
       padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: all 0.18s;
+      transition: all 0.15s;
       cursor: pointer;
     }
-    .approval-card:hover { border-color: var(--bnk-red); background: white; }
+    .approval-card:hover {
+      border-color: var(--line-strong);
+      background: var(--surface);
+    }
     .approval-card.has-pending {
-      background: linear-gradient(135deg, #FFF5F5 0%, #FFECEE 100%);
-      border-color: #F5C8CA;
+      background: var(--bnk-red-soft);
+      border-color: var(--bnk-red-line);
+    }
+    .approval-card.has-pending:hover {
+      border-color: var(--bnk-red);
+      background: #FFE7E9;
     }
     .approval-info .label {
-      font-size: 11px;
-      color: var(--text-muted);
+      font-size: var(--fs-xs);
+      color: var(--text-3);
       margin-bottom: 2px;
+      font-weight: 500;
     }
-    .approval-info .name { font-size: 13px; font-weight: 600; }
+    .approval-info .name {
+      font-size: var(--fs-md);
+      font-weight: 600;
+    }
     .approval-count {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: -1px;
-      color: var(--text-light);
+      letter-spacing: -0.8px;
+      color: var(--text-4);
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
     }
     .approval-card.has-pending .approval-count { color: var(--bnk-red); }
     .approval-count .unit {
-      font-size: 11px;
+      font-size: var(--fs-xs);
       font-weight: 500;
-      color: var(--text-muted);
+      color: var(--text-3);
       margin-left: 2px;
     }
-    .approval-card.has-pending .approval-count .unit { color: var(--bnk-dark-red); }
+    .approval-card.has-pending .approval-count .unit { color: var(--bnk-red-dark); }
 
-    /* ============ 영업 현황 ============ */
-    /* KPI 좌측 정렬 */
+    /* ===== Sales: KPI ===== */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 180px));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-bottom: 12px;
-      justify-content: flex-start;
-      width: fit-content;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
     }
     .kpi-card {
-      background: white;
-      padding: 10px 16px;
-      text-align: left;
+      background: var(--surface);
+      padding: 10px 14px;
+      border-right: 1px solid var(--line);
     }
-    .kpi-card.highlight { background: var(--bg-warm); }
+    .kpi-card:last-child { border-right: none; }
+    .kpi-card.highlight { background: var(--bnk-red-soft); }
     .kpi-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      margin-bottom: 5px;
+      font-weight: 500;
     }
     .kpi-value {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
-      color: var(--text);
       letter-spacing: -1px;
       line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
     .kpi-value.red { color: var(--bnk-red); }
     .kpi-value .unit {
-      font-size: 11px;
+      font-size: var(--fs-sm);
       font-weight: 500;
-      color: var(--text-muted);
-      margin-left: 2px;
+      color: var(--text-3);
+      margin-left: 3px;
     }
     .kpi-sub {
-      font-size: 10px;
-      color: var(--text-light);
-      margin-top: 4px;
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      margin-top: 5px;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
     }
     .kpi-sub.up { color: var(--positive); }
     .kpi-sub.down { color: var(--negative); }
+    .kpi-sub .arrow { font-size: 9px; margin-right: 2px; }
 
-    /* 본부별 + 실시간 */
+    /* ===== Sales: Two columns ===== */
     .sales-two-col {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1.25fr 1fr;
       gap: 12px;
     }
 
@@ -310,70 +332,68 @@
       margin-bottom: 6px;
     }
     .sub-head h3 {
-      font-size: 12.5px;
+      font-size: var(--fs-md);
       font-weight: 700;
       letter-spacing: -0.3px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-    .sub-head h3::before {
-      content: '';
-      width: 3px;
-      height: 12px;
-      background: var(--bnk-dark-gray);
-    }
+    .sub-head .timestamp { font-size: 10.5px; }
 
-    /* 본부 테이블 */
+    /* Branch table */
     .branch-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
-      background: var(--bg-table);
+      font-size: var(--fs-md);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
     }
     .branch-table th, .branch-table td {
-      padding: 7px 8px;
+      padding: 7px 10px;
       text-align: right;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line-2);
+      font-variant-numeric: tabular-nums;
     }
     .branch-table th {
-      background: var(--bg-soft);
+      background: var(--surface-3);
       font-weight: 600;
-      color: var(--text-muted);
-      font-size: 11px;
+      color: var(--text-2);
+      font-size: var(--fs-xs);
       text-align: center;
-      border-bottom: 1px solid var(--border-strong);
+      border-bottom: 1px solid var(--line);
     }
     .branch-table th:first-child, .branch-table td:first-child {
       text-align: left;
-      padding-left: 10px;
+      padding-left: 14px;
       font-weight: 500;
     }
-    .branch-table tbody tr:hover { background: var(--bg-warm); }
-    .branch-table tr.total { background: var(--bg-warm); font-weight: 700; }
-    .branch-table tr.total td {
-      border-top: 1.5px solid var(--bnk-dark-gray);
-      border-bottom: 1.5px solid var(--bnk-dark-gray);
+    .branch-table tbody tr:hover { background: var(--surface-2); }
+    .branch-table tbody tr:last-child td { border-bottom: none; }
+    .branch-table tr.total {
+      background: var(--surface-3);
+      font-weight: 700;
     }
-    .branch-table .num { font-variant-numeric: tabular-nums; }
+    .branch-table tr.total td { border-top: 1px solid var(--line-strong); }
+    .branch-table tr.total:hover { background: var(--surface-3); }
     .branch-table .rate-high { color: var(--bnk-red); font-weight: 600; }
 
-    /* 실시간 */
+    /* Realtime */
     .realtime-panel {
-      background: var(--bg-table);
-      border: 1px solid var(--border);
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
       padding: 10px 12px;
     }
     .realtime-block + .realtime-block {
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--line);
     }
     .realtime-title {
-      font-size: 11.5px;
+      font-size: var(--fs-sm);
       font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      color: var(--text-2);
+      margin-bottom: 7px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -386,70 +406,45 @@
       animation: pulse 1.6s infinite;
     }
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      0%   { opacity: 1; box-shadow: 0 0 0 0 rgba(215, 25, 31, 0.5); }
+      70%  { opacity: 0.6; box-shadow: 0 0 0 5px rgba(215, 25, 31, 0); }
+      100% { opacity: 1; box-shadow: 0 0 0 0 rgba(215, 25, 31, 0); }
     }
     .realtime-summary {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6px;
-      margin-bottom: 6px;
     }
     .realtime-stat {
-  background: white;
-  border: 1px solid var(--border);
-  padding: 14px 14px;   /* 6px 10px → 14px */
-}
-.realtime-stat .lbl {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-.realtime-stat .val {
-  font-size: 22px;      /* 15px → 22px */
-  font-weight: 700;
-  letter-spacing: -0.7px;
-}
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px 12px;
+    }
+    .realtime-stat .lbl {
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .realtime-stat .val {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
     .realtime-stat .val.red { color: var(--bnk-red); }
+    .realtime-stat .val .unit {
+      font-size: var(--fs-sm);
+      color: var(--text-3);
+      font-weight: 500;
+      margin-left: 3px;
+    }
 
-    .realtime-list {
-      background: white;
-      border: 1px solid var(--border);
-    }
-    .realtime-row {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      gap: 8px;
-      padding: 5px 12px;
-      font-size: 11.5px;
-      border-bottom: 1px solid var(--border);
-      align-items: center;
-    }
-    .realtime-row:last-child { border-bottom: none; }
-    .realtime-row .time {
-      color: var(--text-light);
-      font-size: 10.5px;
-      font-variant-numeric: tabular-nums;
-    }
-    .realtime-row .amount {
-      font-weight: 600;
-      color: var(--text);
-      font-variant-numeric: tabular-nums;
-    }
-    .status-tag {
-      display: inline-block;
-      padding: 1px 6px;
-      font-size: 10px;
-      font-weight: 600;
-      border-radius: 2px;
-    }
-    .status-tag.new { background: #FFEEEF; color: var(--bnk-red); }
-    .status-tag.done { background: #E6F4EA; color: var(--positive); }
-
-    /* ============ 반응형 ============ */
+    /* Responsive */
     @media (max-width: 1280px) {
       .service-grid { grid-template-columns: repeat(7, 1fr); }
-      .kpi-grid { grid-template-columns: repeat(5, 1fr); width: 100%; }
     }
     @media (max-width: 1024px) {
       .top-header { flex-wrap: wrap; }
@@ -457,6 +452,8 @@
       .service-grid { grid-template-columns: repeat(4, 1fr); }
       .sales-two-col { grid-template-columns: 1fr; }
       .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+      .kpi-card:nth-child(3) { border-right: none; }
+      .kpi-card:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
       .approval-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
@@ -465,16 +462,18 @@
       .kpi-grid { grid-template-columns: repeat(2, 1fr); }
       .approval-grid { grid-template-columns: 1fr; }
     }
+
+    .icn { stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
   </style>
 </head>
 <body>
 
-  <!-- 1. 최상단 -->
+  <!-- Top Header -->
   <header class="top-header">
     <div class="greeting-area">
       <div class="logo-mark">BNK</div>
       <div class="greeting-text">
-        안녕하세요, <span class="name">홍길동 팀장</span>님 ☀️
+        안녕하세요, <span class="name">홍길동 팀장</span>님
       </div>
       <div class="header-dropdown">
         <select class="dropdown-select" onchange="if(this.value) window.open(this.value, '_blank'); this.selectedIndex=0;">
@@ -513,35 +512,49 @@
     <!-- 주요 서비스 -->
     <section class="panel">
       <div class="section-head">
-        <div class="label"><h2>주요 서비스</h2></div>
+        <h2>주요 서비스</h2>
       </div>
       <div class="service-grid">
         <a href="#" class="service-btn">
-          <div class="service-icon">👁️</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path class="icn" d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle class="icn" cx="12" cy="12" r="3"/></svg>
+          </div>
           <div class="service-name">그룹웨어<br>(BNK eye)</div>
         </a>
         <a href="#" class="service-btn">
-          <div class="service-icon">📊</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path class="icn" d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
+          </div>
           <div class="service-name">영업지원<br>시스템</div>
         </a>
         <a href="#" class="service-btn">
-          <div class="service-icon">👥</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle class="icn" cx="9" cy="8" r="3.2"/><path class="icn" d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle class="icn" cx="17" cy="9" r="2.6"/><path class="icn" d="M14.5 14.5c.8-.3 1.6-.5 2.5-.5 2.8 0 5 2.2 5 5"/></svg>
+          </div>
           <div class="service-name">HR</div>
         </a>
         <a href="#" class="service-btn">
-          <div class="service-icon">💾</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><ellipse class="icn" cx="12" cy="5" rx="8" ry="2.5"/><path class="icn" d="M4 5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V5M4 11v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6"/></svg>
+          </div>
           <div class="service-name">정보계</div>
         </a>
         <a href="#" class="service-btn">
-          <div class="service-icon">💰</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle class="icn" cx="12" cy="12" r="9"/><path class="icn" d="M12 7v10M9.5 9.5c0-1 1-1.8 2.5-1.8s2.5.8 2.5 1.8-1 1.5-2.5 1.8-2.5.8-2.5 1.8 1 1.8 2.5 1.8 2.5-.8 2.5-1.8"/></svg>
+          </div>
           <div class="service-name">종합수익</div>
         </a>
         <a href="#" class="service-btn">
-          <div class="service-icon">🛡️</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path class="icn" d="M12 3l8 3v5c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-3z"/><path class="icn" d="M9 12l2 2 4-4"/></svg>
+          </div>
           <div class="service-name">소비자<br>보호</div>
         </a>
         <a href="#" class="service-btn">
-          <div class="service-icon">📑</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path class="icn" d="M5 3h10l4 4v14H5z"/><path class="icn" d="M15 3v4h4M8 12h8M8 16h8M8 8h3"/></svg>
+          </div>
           <div class="service-name">책무<br>구조도</div>
         </a>
       </div>
@@ -550,7 +563,8 @@
     <!-- 결재 대기 -->
     <section class="panel">
       <div class="section-head">
-        <div class="label"><h2>📋 결재 대기</h2></div>
+        <h2>결재 대기</h2>
+        <span class="timestamp">총 7건 · 업데이트 09:30</span>
       </div>
       <div class="approval-grid">
         <div class="approval-card has-pending">
@@ -587,11 +601,10 @@
     <!-- 영업 현황 -->
     <section class="panel">
       <div class="section-head">
-        <div class="label"><h2>📊 영업 현황</h2></div>
+        <h2>영업 현황</h2>
         <span class="timestamp">기준일: 2026-05-18 09:30</span>
       </div>
 
-      <!-- KPI 좌측 정렬 -->
       <div class="kpi-grid">
         <div class="kpi-card">
           <div class="kpi-label">인원</div>
@@ -601,17 +614,17 @@
         <div class="kpi-card">
           <div class="kpi-label">취급액 (당월)</div>
           <div class="kpi-value">1,847<span class="unit">억</span></div>
-          <div class="kpi-sub up">▲ 전월비 +8.2%</div>
+          <div class="kpi-sub up"><span class="arrow">▲</span>전월비 +8.2%</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">잔액</div>
           <div class="kpi-value">24,318<span class="unit">억</span></div>
-          <div class="kpi-sub up">▲ +2.1%</div>
+          <div class="kpi-sub up"><span class="arrow">▲</span>+2.1%</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">연체액</div>
           <div class="kpi-value">328<span class="unit">억</span></div>
-          <div class="kpi-sub down">▲ +0.4%</div>
+          <div class="kpi-sub down"><span class="arrow">▲</span>+0.4%</div>
         </div>
         <div class="kpi-card highlight">
           <div class="kpi-label">연체율</div>
@@ -620,9 +633,7 @@
         </div>
       </div>
 
-      <!-- 본부별 + 실시간 -->
       <div class="sales-two-col">
-        <!-- 본부별 -->
         <div>
           <div class="sub-head">
             <h3>본부별 현황</h3>
@@ -642,75 +653,77 @@
             <tbody>
               <tr>
                 <td>오토금융본부</td>
-                <td class="num">762</td>
-                <td class="num">9,847</td>
-                <td class="num">112</td>
-                <td class="num">1.14%</td>
-                <td class="num">1.02%</td>
+                <td>762</td>
+                <td>9,847</td>
+                <td>112</td>
+                <td>1.14%</td>
+                <td>1.02%</td>
               </tr>
               <tr>
                 <td>소매금융본부</td>
-                <td class="num">583</td>
-                <td class="num">7,892</td>
-                <td class="num">128</td>
-                <td class="num rate-high">1.62%</td>
-                <td class="num">1.47%</td>
+                <td>583</td>
+                <td>7,892</td>
+                <td>128</td>
+                <td class="rate-high">1.62%</td>
+                <td>1.47%</td>
               </tr>
               <tr>
                 <td>기업금융본부</td>
-                <td class="num">502</td>
-                <td class="num">6,579</td>
-                <td class="num">88</td>
-                <td class="num">1.34%</td>
-                <td class="num">1.18%</td>
+                <td>502</td>
+                <td>6,579</td>
+                <td>88</td>
+                <td>1.34%</td>
+                <td>1.18%</td>
               </tr>
               <tr class="total">
                 <td>합계</td>
-                <td class="num">1,847</td>
-                <td class="num">24,318</td>
-                <td class="num">328</td>
-                <td class="num">1.35%</td>
-                <td class="num">1.21%</td>
+                <td>1,847</td>
+                <td>24,318</td>
+                <td>328</td>
+                <td>1.35%</td>
+                <td>1.21%</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-<!-- 실시간 -->
-        <div class="realtime-panel">
-
-          <div class="realtime-block">
-            <div class="realtime-title">
-              <span class="live-dot"></span> 실시간 여신 신청 현황
-            </div>
-            <div class="realtime-summary">
-              <div class="realtime-stat">
-                <div class="lbl">오늘 신청</div>
-                <div class="val red">47<span style="font-size:11px; color:var(--text-muted); font-weight:500;"> 건</span></div>
+        <div>
+          <div class="sub-head">
+            <h3>실시간 여신 현황</h3>
+            <span class="timestamp">자동 새로고침</span>
+          </div>
+          <div class="realtime-panel">
+            <div class="realtime-block">
+              <div class="realtime-title">
+                <span class="live-dot"></span> 실시간 여신 신청
               </div>
-              <div class="realtime-stat">
-                <div class="lbl">신청 금액</div>
-                <div class="val">82.4<span style="font-size:11px; color:var(--text-muted); font-weight:500;"> 억</span></div>
+              <div class="realtime-summary">
+                <div class="realtime-stat">
+                  <div class="lbl">오늘 신청</div>
+                  <div class="val red">47<span class="unit">건</span></div>
+                </div>
+                <div class="realtime-stat">
+                  <div class="lbl">신청 금액</div>
+                  <div class="val">82.4<span class="unit">억</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="realtime-block">
+              <div class="realtime-title">
+                <span class="live-dot"></span> 실시간 여신 실행
+              </div>
+              <div class="realtime-summary">
+                <div class="realtime-stat">
+                  <div class="lbl">오늘 실행</div>
+                  <div class="val red">31<span class="unit">건</span></div>
+                </div>
+                <div class="realtime-stat">
+                  <div class="lbl">실행 금액</div>
+                  <div class="val">58.7<span class="unit">억</span></div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="realtime-block">
-            <div class="realtime-title">
-              <span class="live-dot"></span> 실시간 여신 실행 현황
-            </div>
-            <div class="realtime-summary">
-              <div class="realtime-stat">
-                <div class="lbl">오늘 실행</div>
-                <div class="val red">31<span style="font-size:11px; color:var(--text-muted); font-weight:500;"> 건</span></div>
-              </div>
-              <div class="realtime-stat">
-                <div class="lbl">실행 금액</div>
-                <div class="val">58.7<span style="font-size:11px; color:var(--text-muted); font-weight:500;"> 억</span></div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 
